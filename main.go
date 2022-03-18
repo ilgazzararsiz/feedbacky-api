@@ -1,15 +1,19 @@
 package main
 
 import (
-    "github.com/gofiber/fiber/v2"
+    "feedbacky-api/appconfig"
+    "feedbacky-api/route"
+    "github.com/gofiber/fiber/v2" 
 )
 
 func main() {
     app := fiber.New()
-  
-    app.Get("/", func(c *fiber.Ctx) error {
-        return c.JSON(&fiber.Map{"data": "OK"})
-    })
-  
+
+    //run database
+    appconfig.ConnectDB()
+
+    //routes
+    route.Feedback(app)
+
     app.Listen(":6000")
 }
