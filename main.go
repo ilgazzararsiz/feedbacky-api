@@ -5,6 +5,7 @@ import (
 	"feedbacky-api/route"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"os"
 )
 
 func main() {
@@ -18,5 +19,5 @@ func main() {
 	//routes
 	route.Feedback(app)
 
-	app.Listen(":6001")
+	app.Listen(os.Getenv("PORT"))
 }
