@@ -1,19 +1,22 @@
 package main
 
 import (
-    "feedbacky-api/appconfig"
-    "feedbacky-api/route"
-    "github.com/gofiber/fiber/v2" 
+	"feedbacky-api/appconfig"
+	"feedbacky-api/route"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
-    app := fiber.New()
+	app := fiber.New()
 
-    //run database
-    appconfig.ConnectDB()
+	app.Use(cors.New())
 
-    //routes
-    route.Feedback(app)
+	//run database
+	appconfig.ConnectDB()
 
-    app.Listen(":6000")
+	//routes
+	route.Feedback(app)
+
+	app.Listen(":6001")
 }
