@@ -16,7 +16,6 @@ import (
 )
 
 const MAX_FEEDBACK_CONTENT_LENGTH = 2000
-const DATE_LAYOUT = "02-01-2006 15:04:05"
 
 var feedbackCollection = appconfig.GetCollection(appconfig.DB, "feedbacky")
 var validate = validator.New()
