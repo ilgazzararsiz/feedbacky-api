@@ -29,7 +29,7 @@ func ConnectDB() *mongo.Client {
 	return client
 }
 
-var DB *mongo.Client = ConnectDB()
+var DB = ConnectDB()
 
 func GetCollection(client *mongo.Client, collectionName string) *mongo.Collection {
 	collection := client.Database("feedbacky-api").Collection(collectionName)
