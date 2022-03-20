@@ -5,6 +5,7 @@ import (
 	"feedbacky-api/route"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"log"
 	"os"
 )
 
@@ -13,11 +14,15 @@ func main() {
 
 	app.Use(cors.New())
 
-	//run database
 	appconfig.ConnectDB()
 
-	//routes
 	route.Feedback(app)
 
-	app.Listen(os.Getenv("PORT"))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "5000"
+	}
+	log.Printf("Listening on port %s\n\n", port)
+
+	app.Listen(port)
 }
