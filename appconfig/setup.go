@@ -2,7 +2,6 @@ package appconfig
 
 import (
 	"context"
-	"fmt"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
@@ -25,11 +24,10 @@ func ConnectDB() *mongo.Client {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Connected to MongoDB")
 	return client
 }
 
-var DB *mongo.Client = ConnectDB()
+var DB = ConnectDB()
 
 func GetCollection(client *mongo.Client, collectionName string) *mongo.Collection {
 	collection := client.Database("feedbacky-api").Collection(collectionName)

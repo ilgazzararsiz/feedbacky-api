@@ -6,6 +6,6 @@ import (
 )
 
 func Feedback(app *fiber.App) {
-	app.Post("/CreateFeedback", controller.CreateFeedback)
-	app.Get("/GetFeedback/:feedbackId", controller.GetFeedback)
+	app.Post("/feedback", controller.CreateFeedback)
+	app.Get("/feedback/:feedbackId", controller.GetFeedback)
 }
